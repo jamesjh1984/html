@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01_html_basic</title>
+
+
+<!--    <style type="text/css">-->
+<!--      body {background-color: lightgray}-->
+<!--      p {color: blue}-->
+<!--    </style>-->
+
+
+    <link rel="stylesheet" href="css/mystyle.css">
+
+    <meta name="html" content="html, css">
+
+    <!-- 定时刷新当前页面 -->
+<!--    <meta http-equiv="refresh" content="3">-->
+
+</head>
+<body>
+
+    <h1>head</h1>
+    <h2>head</h2>
+    <h3>head</h3>
+    <h4>head</h4>
+    <h5>head</h5>
+    <h6>head</h6>
+
+    <hr>
+
+        <a href="#img">jump to 图片</a><br>
+        <a href="#table">jump to 表格</a><br>
+        <a href="#list">jump to 列表</a><br>
+
+    <hr>
+
+    <p>文本格式化标签</p>
+
+        <b>bold</b><br>
+        <i>italic</i><br>
+        <sub>sub</sub><br>
+        <sup>sup</sup><br>
+        <strong>strong</strong><br>
+        <ins>ins</ins><br>
+        <del>del</del><br>
+
+    <hr>
+
+    <p>计算机输出标签</p>
+
+        <code>if</code><br>
+        <kbd>if</kbd><br>
+        <samp>if</samp><br>
+        <var>if</var><br>
+        <pre>if</pre><br>
+
+    <hr>
+
+    <p>引文，引用及标签定义</p>
+
+        <abbr>abbr</abbr><br>
+        <address>address</address><br>
+        <bdo>bdo</bdo><br>
+        <blockquto>blockquto</blockquto><br>
+        <q>q</q><br>
+        <cite>cite</cite><br>
+        <dfn>dfn</dfn><br>
+
+    <hr>
+
+    <p>超链接</p>
+
+        <a href="https://www.apple.com.cn">Apple.com</a><br>
+        <a href="https://www.apple.com.cn" style="text-decoration: none">Apple.com</a><br>
+        <a href="https://www.apple.com.cn">Apple.com</a><br>
+
+        <br><br>
+
+        <a href="tips">AAA</a><br>
+        <a href="#tips">BBB</a><br>
+        <a href="https://www.apple.com.cn#tips">CCC</a><br>
+
+    <hr>
+
+    <p><a id="img">图片</a></p>
+
+        <!-- alt属性用来为图像定义一串预备的可替换的文本 -->
+        无链接图片<br>
+        <img src="img/apple.png" alt="Apple" loading="lazy"><br><br>
+
+        有链接图片<br>
+        <a href="https://www.apple.com.cn">
+            <img src="img/apple.png" alt="Apple" border="0">
+        </a><br><br>
+
+        有链接有边框图片<br>
+        <a href="https://www.apple.com.cn">
+            <img src="img/apple.png" alt="Apple" border="5">
+        </a><br><br>
+
+    <hr>
+
+    <p><a id="table">表格</a></p>
+
+        <captain>水平标题：</captain>
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Job</th>
+            </tr>
+            <tr>
+                <td>Bill Gates</td>
+                <td>Male</td>
+                <td>Microsoft</td>
+            </tr>
+            <tr>
+                <td>Lebron James</td>
+                <td>Male</td>
+                <td>LA Lakers</td>
+            </tr>
+        </table><br><br>
+
+        <captain>水平标题（单元格跨两列，有单元格边距，有单元格间距）：</captain>
+        <table border="1" cellpadding="5" cellspacing="10">
+            <tr>
+                <th>Name</th>
+                <th colspan="2">Detail</th>
+            </tr>
+            <tr>
+                <td>Bill Gates</td>
+                <td>Male</td>
+                <td>Microsoft</td>
+            </tr>
+            <tr>
+                <td>Lebron James</td>
+                <td>Male</td>
+                <td>LA Lakers</td>
+            </tr>
+        </table><br><br>
+
+
+
+        <captain>垂直标题：</captain>
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <td>Bill Gates</td>
+                <td>Lebron James</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>Male</td>
+                <td>Male</td>
+            </tr>
+            <tr>
+                <td>Job</td>
+                <td>Microsoft</td>
+                <td>LA Lakers</td>
+            </tr>
+        </table><br><br>
+
+
+        <captain>垂直标题（单元格跨两行）：</captain>
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <td>Bill Gates</td>
+                <td>Lebron James</td>
+            </tr>
+            <tr>
+                <th rowspan="2">Detail</th>
+                <td>Male</td>
+                <td>Male</td>
+            </tr>
+            <tr>
+                <td>Microsoft</td>
+                <td>LA Lakers</td>
+            </tr>
+        </table><br><br>
+
+    <hr>
+
+    <p><a id="list">列表</a></p>
+
+        无序列表
+        <ul>
+            <li>Coffee</li>
+            <li>Milk</li>
+        </ul>
+
+        有序列表
+        <ol>
+            <li>Coffee</li>
+            <li>Milk</li>
+        </ol>
+
+
+</body>
+</html>
