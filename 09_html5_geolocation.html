@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09_html5_geolocation</title>
+<body>
+
+<p id="demo">Click button</p>
+<script>
+    var x=document.getElementById("demo");
+
+    function showPosition(position) {
+        x.innerHTML="纬度： " + position.coords.latitude +
+                    "<br> 经度：" + position.coords.longitude;
+    }
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "This browser does not support Geo location";
+        }
+    }
+</script>
+<button onclick="getLocation()">
+    Click Me
+</button>
+
+</body>
+</html>
