@@ -3,28 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>09_html5_geolocation</title>
+
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=7a6QKaIilZftIMmKGAFLG7QT1GLfIncg">
+    </script>
+
+</head>
+
 <body>
 
-<p id="demo">Click button</p>
-<script>
-    var x=document.getElementById("demo");
+<p>百度获取经纬度的例子<br>点击按钮, 获取您当前坐标（可能需要比较长的时间获取）</p>
 
-    function showPosition(position) {
-        x.innerHTML="纬度： " + position.coords.latitude +
-                    "<br> 经度：" + position.coords.longitude;
-    }
+<input type="button" onclick="getLocation()" value="确认"/>
+
+<div id="position"></div>
+
+<script>
+    var x=document.getElementById("position");
 
     function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            x.innerHTML = "This browser does not support Geo location";
-        }
+        var geoLocation = new BMap.Geolocation();
+        geoLocation.getCurrentPosition(function (e) {
+            if(this.getStats() == BMAP_STATUS_SUCCESS) {
+                x.innerHTML = '维度： ' + e.point.lat + '<br/>经度： ' + e.point.lng;
+            } else {
+                x.innerHTML = 'failed ' + this.getStatus();
+            }
+        });
     }
+
+
+
+    // function showPosition(position) {
+    //     /*
+    //     x.innerHTML="纬度： " + position.coords.latitude +
+    //                 "<br> 经度：" + position.coords.longitude;
+    //     */
+    //
+    //     var latlon=position.coords.latitude + "," + position.coords.longitude;
+    //     var img_url="http://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false";
+    //     document.getElementById("mapholder").innerHTML="<img src='" + img_url + "'>";
+    // }
+
+    // function showError(error) {
+    //     switch (error.code) {
+    //         case error.PERMISSION_DENIED:
+    //             x.innerHTML="用户拒绝获取位置请求"
+    //             break;
+    //         case error.POSITION_UNAVAILABLE:
+    //             x.innerHTML="位置信息不可用"
+    //             break;
+    //         case error.TIMEOUT:
+    //             x.innerHTML="请求用户位置超时"
+    //             break;
+    //         case error.UNKNOWN_ERR:
+    //             x.innerHTML="未知错误"
+    //             break;
+    //     }
+    // }
+
 </script>
-<button onclick="getLocation()">
-    Click Me
-</button>
 
 </body>
 </html>

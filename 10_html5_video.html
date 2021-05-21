@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10_html5_video</title>
+</head>
+
+<body>
+<p>video元素支持三种视频格式：MP4, WebM, 和Ogg:</p>
+<video controls>
+    <source src="video/football.mp4" type="video/mp4">
+    您的浏览器不支持HTML5 video标签
+</video>
+
+
+<br><br>
+<hr>
+<br><br>
+
+
+
+
+<div style="text-align: left">
+    <button onclick="playPause()">play / pause</button>
+    <button onclick="zoomPlus()">zoom+</button>
+    <button onclick="zoomMinus()">zoom-</button>
+    <button onclick="normal()">normal</button>
+
+    <br><br>
+
+    <video id="lebron">
+        <source src="video/lebron.mp4" type="video/mp4">
+        您的浏览器不支持HTML5 video标签
+    </video>
+</div>
+
+<script>
+    var video = document.getElementById("lebron");
+    var originalWidth = video.offsetWidth;
+
+    console.log("offsetWidth: " + video.offsetWidth);
+    console.log("offsetHeight: " + video.offsetHeight);
+    console.log("scrollWidth: " + video.scrollWidth);
+
+    function playPause() {
+        if(video.paused)
+            video.play();
+        else
+            video.pause();
+    }
+
+    function zoomPlus() {
+        video.width = originalWidth + 100;
+    }
+
+    function zoomMinus() {
+        video.width = originalWidth - 100;
+    }
+
+    function normal() {
+        video.width = 300;
+    }
+</script>
+
+</body>
+</html>
