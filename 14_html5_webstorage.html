@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14_html5_webstorage</title>
+
+    <script>
+        // if(typeof(Storage) !== "undefined") {
+        //     localStorage.sitename="jin.com";
+        //     document.getElementById("div1").innerHTML = "site name: " + localStorage.sitename;
+        // } else {
+        //     document.getElementById("div1").innerHTML = "sorry, your browser does not support web storage."
+        // }
+
+
+        function localClickCounter() {
+            if(typeof(Storage) !== "undefined") {
+                if(localStorage.clickcount) {
+                    localStorage.clickcount = Number(localStorage.clickcount) + 1;
+                } else {
+                    localStorage.clickcount = 1;
+                }
+                document.getElementById("div1").innerHTML = "you have clicked button " + localStorage.clickcount + " time(s)";
+            } else {
+                document.getElementById("div1").innerHTML = "sorry, your browser does not support web storage."
+            }
+        }
+
+        function sessionClickCounter() {
+            if(typeof(Storage) !== "undefined") {
+                if(sessionStorage.clickcount) {
+                    sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+                } else {
+                    sessionStorage.clickcount = 1;
+                }
+                document.getElementById("div2").innerHTML = "you have clicked button " + sessionStorage.clickcount + " time(s)";
+            } else {
+                document.getElementById("div2").innerHTML = "sorry, your browser does not support web storage."
+            }
+        }
+
+
+
+        function save() {
+            var sitename = document.getElementById("site_name").value;
+            var siteurl = document.getElementById("site_url").value;
+            localStorage.setItem(sitename, siteurl);
+            alert("Add success!");
+        }
+
+        function find() {
+            var sitename = document.getElementById("site_find").value;
+            var siteurl = localStorage.getItem(sitename);
+            var find_result = document.getElementById("find_result");
+            find_result.innerHTML = sitename + " : " + siteurl;
+
+            console.log(sitename);
+            console.log(siteurl);
+            console.log(find_result);
+
+        }
+
+
+        function loadAll() {
+            var list = document.getElementById("list");
+
+            if(localStorage.length > 0) {
+                var result = "<table border='1'>";
+                result += "<tr><td>key</td><td>value</td></tr>";
+                for (var i=0; i<localStorage.length; i++) {
+                    var sitename = localStorage.key(i);
+                    var siteurl = localStorage.getItem(sitename);
+                    result += "<tr><td>" + sitename + "</td><td>" + siteurl + "</td></tr>";
+                }
+                result += "</table>";
+                list.innerHTML = result;
+            } else {
+                list.innerHTML = "Null...";
+            }
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+<h1>localStorage</h1>
+
+<p>点击该按钮查看计数器的增加</p>
+<p>关闭浏览器选项卡(或窗口),重新打开此页面,计数器将继续计数(不是重置)</p>
+<p><button onclick="localClickCounter()" type="button">Click Me</button></p>
+<div id="div1"></div>
+
+
+<hr>
+
+<h1>sessionStorage </h1>
+
+<p>点击该按钮查看计数器的增加</p>
+<p>关闭浏览器选项卡(或窗口),重新打开此页面,计数器将重置</p>
+<p><button onclick="sessionClickCounter()" type="button">Click Me</button></p>
+<div id="div2"></div>
+
+
+
+<hr>
+
+
+<h1>网站新增与查询 by localStorage</h1>
+<div style="border: 2px dashed #ccc; width: 800px; text-align: left;">
+
+    <label for="site_name">Site Name (key):</label>
+    <input type="text" id="site_name" class="text"/>
+
+    <br>
+
+    <label for="site_url">Site URL (value):</label>
+    <input type="text" id="site_url" class="text"/>
+    <br>
+    <input type="button" onclick="save()" value="add website"/>
+
+    <br>
+    <hr>
+
+    <label for="site_find">Site Name (key):</label>
+    <input type="text" id="site_find" class="text"/>
+    <br>
+    <input type="button" onclick="find()" value="find website"/>
+    <br><br>
+    <div id="find_result"></div>
+
+</div>
+
+<br><br><br>
+
+
+<input type="button" onclick="loadAll()" value="Check all localStorage"/>
+<br><br>
+<div id="list"></div>
+
+
+</body>
+</html>

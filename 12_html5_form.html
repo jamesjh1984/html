@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12_html5_form</title>
+</head>
+
+<body>
+
+<!-- novalidate 属性规定在提交表单时不应该验证 form 或 input 域 -->
+<form action="" novalidate>
+
+    Choose your favorite car: <br/>
+    <input list="car_list" name="cars">
+    <datalist id="car_list">
+        <option value="BMW"></option>
+        <option value="Benz"></option>
+        <option value="Audi"></option>
+        <option value="Volvo"></option>
+        <option value="Honda"></option>
+        <option value="Toyota"></option>
+    </datalist>
+
+
+    <br/><br/><br/><br/>
+
+
+    <!-- autofocus 属性规定在页面加载时，域自动地获得焦点 -->
+    E-mail: <br>
+    <input type="email" name="user_email" autofocus>
+
+
+
+    <br/><br/><br/><br/>
+
+
+    <input type="submit">
+
+</form>
+
+
+</body>
+</html>

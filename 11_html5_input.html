@@ -31,7 +31,7 @@
 
 
     <p>select date: </p>
-    <input type="date">
+    <input type="date" min="1900-01-01" max="2100-01-01">
 
 
     <br><br><br>
@@ -58,8 +58,8 @@
     <br><br><br>
 
 
-    <p>input number (1-10): </p>
-    <input type="number" min="1" max="10">
+    <p>input number (1-10), 间隔2: </p>
+    <input type="number" min="1" max="10" step="2">
 
 
     <br><br><br>
@@ -96,6 +96,26 @@
 
 
     <br><br><br>
+
+
+    <!-- multiple 属性规定可选择多个文件 -->
+    <p>select files: </p>
+    <input type="file" multiple>
+
+
+
+    <br><br><br>
+
+
+
+
+    <p>country code: (下面的例子显示了一个只能包含三个字母的文本域， required 属性规定不能为空)</p>
+    <input type="text" pattern="[A-Za-z]{3}" required>
+
+
+
+    <br><br><br>
+
 
 
     <input type="submit">
