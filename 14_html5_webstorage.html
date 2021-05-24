@@ -122,12 +122,12 @@
 
             if(localStorage.length > 0) {
                 var result = "<table border='1'>";
-                result += "<tr><td>key</td><td>site_name</td><td>site_url</td></tr>";
+                result += "<tr><td>key</td><td>site_name</td><td>site_url</td><td>operation</td></tr>";
                 for (var i=0; i<localStorage.length; i++) {
                     var key = localStorage.key(i);
                     var site_str = localStorage.getItem(key);
                     var site = JSON.parse(site_str);
-                    result += "<tr><td>" + site.key + "</td><td>" + site.sitename + "</td><td>" + site.siteurl + "</td></tr>";
+                    result += "<tr><td>" + site.key + "</td><td>" + site.sitename + "</td><td>" + site.siteurl + "</td><td>" + "<input type='button' onclick='del(" + key + ")' value='delete'/>" +  "</td></tr>";
                 }
                 result += "</table>";
                 list.innerHTML = result;
