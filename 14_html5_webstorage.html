@@ -49,16 +49,24 @@
         }
 
         function find() {
-            var sitename = document.getElementById("site_find").value;
-            var siteurl = localStorage.getItem(sitename);
+            var key = document.getElementById("find_key").value;
+            var siteurl = localStorage.getItem(key);
             var find_result = document.getElementById("find_result");
-            find_result.innerHTML = sitename + " : " + siteurl;
+            find_result.innerHTML = key + " : " + siteurl;
 
-            console.log(sitename);
+            console.log(key);
             console.log(siteurl);
             console.log(find_result);
-
         }
+
+
+
+        function del(key) {
+            localStorage.removeItem(key);
+            alert("Delete success!");
+            loadAll();
+        }
+
 
 
         function loadAll() {
@@ -66,11 +74,60 @@
 
             if(localStorage.length > 0) {
                 var result = "<table border='1'>";
-                result += "<tr><td>key</td><td>value</td></tr>";
+                result += "<tr><td>key</td><td>value</td><td>operation</td></tr>";
                 for (var i=0; i<localStorage.length; i++) {
                     var sitename = localStorage.key(i);
                     var siteurl = localStorage.getItem(sitename);
-                    result += "<tr><td>" + sitename + "</td><td>" + siteurl + "</td></tr>";
+                    result += "<tr><td>" + sitename + "</td><td>" + siteurl + "</td><td>" + "<input type='button' onclick='del(" + sitename + ")' value='delete'/>" + "</td></tr>";
+                }
+                result += "</table>";
+                list.innerHTML = result;
+            } else {
+                list.innerHTML = "Null...";
+            }
+
+        }
+
+
+
+
+        // JSON.stringify
+        function save_1() {
+            var site = new Object;
+            site.key = document.getElementById("key_1").value;
+            site.sitename = document.getElementById("site_name_1").value;
+            site.siteurl = document.getElementById("site_url_1").value;
+            var site_str = JSON.stringify(site); // 将JSON对象转换成字符串
+            localStorage.setItem(site.key, site_str);
+            alert("Add success!");
+        }
+
+        function find_1() {
+            var key = document.getElementById("find_key_1").value;
+            var site_str = localStorage.getItem(key);
+            var find_result = document.getElementById("find_result_1");
+            var site = JSON.parse(site_str); // 将字符串转换成JSON对象
+            find_result.innerHTML = key + " => " + site.sitename +  " : " + site.siteurl;
+
+            console.log(key);
+            console.log("site.sitename: " + site.sitename);
+            console.log("site.siteurl: " + site.siteurl);
+            console.log(find_result);
+
+        }
+
+
+        function loadAll_1() {
+            var list = document.getElementById("list_1");
+
+            if(localStorage.length > 0) {
+                var result = "<table border='1'>";
+                result += "<tr><td>key</td><td>site_name</td><td>site_url</td></tr>";
+                for (var i=0; i<localStorage.length; i++) {
+                    var key = localStorage.key(i);
+                    var site_str = localStorage.getItem(key);
+                    var site = JSON.parse(site_str);
+                    result += "<tr><td>" + site.key + "</td><td>" + site.sitename + "</td><td>" + site.siteurl + "</td></tr>";
                 }
                 result += "</table>";
                 list.innerHTML = result;
@@ -124,8 +181,8 @@
     <br>
     <hr>
 
-    <label for="site_find">Site Name (key):</label>
-    <input type="text" id="site_find" class="text"/>
+    <label for="find_key">Site Name (key):</label>
+    <input type="text" id="find_key" class="text"/>
     <br>
     <input type="button" onclick="find()" value="find website"/>
     <br><br>
@@ -139,6 +196,53 @@
 <input type="button" onclick="loadAll()" value="Check all localStorage"/>
 <br><br>
 <div id="list"></div>
+
+
+
+
+
+
+
+<hr>
+
+
+<h1>网站新增与查询 by localStorage (JSON.stringify)</h1>
+<div style="border: 2px dashed #ccc; width: 800px; text-align: left;">
+
+    <label for="key_1">Key: </label>
+    <input type="text" id="key_1" class="text"/>
+
+    <br>
+
+    <label for="site_name_1">Site.Name: </label>
+    <input type="text" id="site_name_1" class="text"/>
+
+    <br>
+
+    <label for="site_url_1">Site.URL: </label>
+    <input type="text" id="site_url_1" class="text"/>
+    <br>
+    <input type="button" onclick="save_1()" value="add website"/>
+
+    <br>
+    <hr>
+
+    <label for="find_key_1">Key: </label>
+    <input type="text" id="find_key_1" class="text"/>
+    <br>
+    <input type="button" onclick="find_1()" value="find website"/>
+    <br><br>
+    <div id="find_result_1"></div>
+
+</div>
+
+<br><br><br>
+
+
+<input type="button" onclick="loadAll_1()" value="Check all localStorage"/>
+<br><br>
+<div id="list_1"></div>
+
 
 
 </body>
