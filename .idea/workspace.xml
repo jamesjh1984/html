@@ -28,7 +28,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jQuery" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -49,6 +49,9 @@
       <workItem from="1621475876813" duration="8486000" />
       <workItem from="1621562382142" duration="13372000" />
       <workItem from="1621660677964" duration="7428000" />
+      <workItem from="1621997746250" duration="591000" />
+      <workItem from="1622077543231" duration="2375000" />
+      <workItem from="1622167636531" duration="5304000" />
     </task>
     <servers />
   </component>

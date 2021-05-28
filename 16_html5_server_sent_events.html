@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16_html5_server_sent_events</title>
+
+</head>
+
+<body>
+
+<h1>get server new data</h1>
+<div id="result"></div>
+<script>
+    if(typeof(EventSource) !== "undefined") {
+        var source = new EventSource("16_sse_demo.php");
+        source.onmessage = function (event) {
+            document.getElementById("result").innerHTML += event.data + "<br>";
+        };
+    } else {
+        document.getElementById("result").innerHTML = "sorry, your browser does not support server_sent_events";
+    }
+</script>
+
+</body>
+</html>
